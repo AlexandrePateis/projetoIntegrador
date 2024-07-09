@@ -1,14 +1,30 @@
-<p style="color: green"><%= notice %></p>
+<div class="container mt-4">
+    <p class="text-success"><%= notice %></p>
 
-<h1>Appointments</h1>
+    <h1>Agendamentos</h1>
 
-<div id="appointments">
-  <% @appointments.each do |appointment| %>
-    <%= render appointment %>
-    <p>
-      <%= link_to "Show this appointment", appointment %>
-    </p>
-  <% end %>
-</div>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Data</th>
+          <th>Cliente</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @appointments.each do |appointment| %>
+          <tr id="<%= dom_id(appointment) %>">
+            <td><%= appointment.id %></td>
+            <td><%= appointment.date %></td>
+            <td><%= appointment.client.name %></td>
+            <td>
+              <%= link_to "Mostrar", appointment, class: "btn btn-secondary btn-sm" %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<%= link_to "New appointment", new_appointment_path %>
+    <%= link_to "Novo agendamento", new_appointment_path, class: "btn btn-secondary btn-sm" %>
+  </div>

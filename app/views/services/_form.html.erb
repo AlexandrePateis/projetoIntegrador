@@ -12,23 +12,23 @@
       <% end %>
 
       <div class="form-group">
-        <%= form.label :name , "Nome"%>
+        <%= form.label :name , "Nome", class:"fw-bold" %>
         <%= form.text_field :name, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= form.label :description, "Descrição" %>
+        <%= form.label :description, "Descrição", class:"fw-bold" %>
         <%= form.text_area :description, class: 'form-control' %>
       </div>
 
       <div class="form-group">
-        <%= form.label :price, "Preço" %>
+        <%= form.label :price, "Preço", class:"fw-bold" %>
         <%= form.text_field :price, class: 'form-control' %>
       </div>
 
-      <div class="text-end mt-3">
-        <%= link_to "Voltar", services_path, class: 'btn btn-secondary' %>
-        <%= form.submit "Salvar", class: 'btn btn-primary' %>
+      <div class="d-flex gap-2 mt-3">
+        <%= link_to "Voltar", services_path, class: 'btn btn-secondary btn-sm' %>
+        <%= form.submit "Salvar", class: 'btn btn-secondary btn-sm' %>
       </div>
     <% end %>
   </div>

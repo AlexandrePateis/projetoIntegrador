@@ -1,32 +1,34 @@
-<%= form_with(model: appointment, local: true) do |form| %>
-  <% if appointment.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h2>
+ <div class="container">
+    <%= form_with(model: appointment, local: true, class: "mt-4") do |form| %>
+      <% if appointment.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+          <h4 class="alert-heading"><%= pluralize(appointment.errors.count, "error") %> prohibited this appointment from being saved:</h4>
+          <ul>
+            <% appointment.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-      <ul>
-        <% appointment.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <div class="form-group">
+        <%= form.label :client_id, "Cliente", class:"fw-bold" %>
+        <%= form.collection_select :client_id, Client.all, :id, :name, { prompt: "Selecione um Cliente" }, { class: "form-control" } %>
+      </div>
 
-  <div class="field">
-    <%= form.label :client_id %>
-    <%= form.collection_select :client_id, Client.all, :id, :name, prompt: "Selecione um Cliente" %>
+      <div class="form-group mt-2">
+        <%= form.label :service_id, "Serviço", class:"fw-bold"  %>
+        <%= form.collection_select :service_id, Service.all, :id, :name, { prompt: "Selecione um Serviço" }, { class: "form-control" } %>
+      </div>
+
+      <div class="form-group mt-2">
+        <%= form.label :date, "Data", class:"fw-bold"  %>
+        <%= form.date_field :date, class: "form-control" %>
+      </div>
+
+      <div class="form-group mt-2">
+        <%= form.submit "Salvar", class: "btn btn-secondary btn-sm" %>
+        <%= link_to "Cancelar", appointments_path, class: "btn btn-secondary btn-sm" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= form.label :service_id %>
-    <%= form.collection_select :service_id, Service.all, :id, :name, prompt: "Selecione um Serviço" %>
-  </div>
-
-  <div class="field">
-    <%= form.label :date %>
-    <%= form.datetime_select :date %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>

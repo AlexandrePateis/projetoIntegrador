@@ -2,7 +2,7 @@
     <p class="text-success"><%= notice %></p>
 
     <div class="card">
-      <div class="card-header bg-primary text-white">
+      <div class="card-header bg-secondary text-white">
         Service Details
       </div>
       <div class="card-body">
@@ -10,9 +10,9 @@
       </div>
       <div class="card-footer">
         <div class="d-flex mt-2 gap-2" role="group">
-          <%= link_to "Voltar", services_path, class: 'btn btn-secondary' %>
-          <%= link_to "Editar serviço", edit_service_path(@service), class: 'btn btn-primary' %>
-        <%= button_to "Apagar", @service, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+          <%= link_to "Voltar", services_path, class: 'btn btn-secondary btn-sm' %>
+          <%= link_to "Editar serviço", edit_service_path(@service), class: 'btn btn-secondary btn-sm' %>
+        <%= button_to "Apagar", @service, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-secondary btn-sm' %>
         </div>
       </div>
     </div>

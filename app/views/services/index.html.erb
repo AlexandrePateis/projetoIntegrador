@@ -13,11 +13,11 @@
         <% @services.each do |service| %>
           <tr>
             <td><%= render service %></td>
-            <td><%= link_to "Mostrar", service, class: 'btn btn-primary' %></td>
+            <td><%= link_to "Mostrar", service, class: 'btn btn-secondary btn-sm' %></td>
           </tr>
         <% end %>
       </tbody>
     </table>
 
-    <%= link_to "Novo Serviço", new_service_path, class: 'btn btn-success' %>
+    <%= link_to "Novo Serviço", new_service_path, class: 'btn btn-secondary btn-sm' %>
   </div>

@@ -18,12 +18,12 @@
             <td><%= client.email %></td>
             <td><%= client.phone %></td>
             <td>
-              <%= link_to "Mostrar", client, class: 'btn btn-primary' %>
+              <%= link_to "Mostrar", client, class: 'btn btn-secondary btn-sm' %>
             </td>
           </tr>
         <% end %>
       </tbody>
     </table>
 
-    <%= link_to "Novo cliente", new_client_path, class: 'btn btn-success' %>
+    <%= link_to "Novo cliente", new_client_path, class: 'btn btn-secondary btn-sm' %>
   </div>
