@@ -1,14 +1,29 @@
-<p style="color: green"><%= notice %></p>
+ <div class="container">
+    <p class="text-success"><%= notice %></p>
+    <h1>Clientes</h1>
 
-<h1>Clients</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Telefone</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @clients.each do |client| %>
+          <tr>
+            <td><%= client.name %></td>
+            <td><%= client.email %></td>
+            <td><%= client.phone %></td>
+            <td>
+              <%= link_to "Mostrar", client, class: 'btn btn-primary' %>
+            </td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<div id="clients">
-  <% @clients.each do |client| %>
-    <%= render client %>
-    <p>
-      <%= link_to "Show this client", client %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New client", new_client_path %>
+    <%= link_to "Novo cliente", new_client_path, class: 'btn btn-success' %>
+  </div>

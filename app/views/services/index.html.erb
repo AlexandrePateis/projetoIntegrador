@@ -1,14 +1,23 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+    <p class="text-success"><%= notice %></p>
+    <h1>Serviços</h1>
 
-<h1>Services</h1>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Serviços</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @services.each do |service| %>
+          <tr>
+            <td><%= render service %></td>
+            <td><%= link_to "Mostrar", service, class: 'btn btn-primary' %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
 
-<div id="services">
-  <% @services.each do |service| %>
-    <%= render service %>
-    <p>
-      <%= link_to "Show this service", service %>
-    </p>
-  <% end %>
-</div>
-
-<%= link_to "New service", new_service_path %>
+    <%= link_to "Novo Serviço", new_service_path, class: 'btn btn-success' %>
+  </div>

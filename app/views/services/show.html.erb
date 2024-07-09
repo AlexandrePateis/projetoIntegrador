@@ -1,10 +1,18 @@
-<p style="color: green"><%= notice %></p>
+ <div class="container">
+    <p class="text-success"><%= notice %></p>
 
-<%= render @service %>
-
-<div>
-  <%= link_to "Edit this service", edit_service_path(@service) %> |
-  <%= link_to "Back to services", services_path %>
-
-  <%= button_to "Destroy this service", @service, method: :delete %>
-</div>
+    <div class="card">
+      <div class="card-header bg-primary text-white">
+        Service Details
+      </div>
+      <div class="card-body">
+        <%= render @service %>
+      </div>
+      <div class="card-footer">
+        <div class="d-flex mt-2 gap-2" role="group">
+          <%= link_to "Voltar", services_path, class: 'btn btn-secondary' %>
+          <%= link_to "Editar serviço", edit_service_path(@service), class: 'btn btn-primary' %>
+        <%= button_to "Apagar", @service, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
+        </div>
+      </div>
+    </div>

@@ -1,10 +1,20 @@
-<p style="color: green"><%= notice %></p>
+<div class="container">
+    <p class="text-success"><%= notice %></p>
 
-<%= render @client %>
+    <div class="card">
+      <div class="card-header bg-success text-white">
+        Client Details
+      </div>
+      <div class="card-body">
+        <%= render @client %>
+      </div>
+      <div class="card-footer">
+        <div class="d-flex gap-2" role="group">
+          <%= link_to "Voltar", clients_path, class: 'btn btn-secondary' %>
+          <%= link_to "Editar cliente", edit_client_path(@client), class: 'btn btn-primary' %>
+        <%= button_to "Apagar", @client, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'%>
+        </div>
+      </div>
+    </div>
 
-<div>
-  <%= link_to "Edit this client", edit_client_path(@client) %> |
-  <%= link_to "Back to clients", clients_path %>
-
-  <%= button_to "Destroy this client", @client, method: :delete %>
-</div>
+  </div>

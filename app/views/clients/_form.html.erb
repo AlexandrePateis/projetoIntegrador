@@ -1,55 +1,57 @@
-<%= form_with(model: client, local: true) do |form| %>
-  <% if client.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h2>
+<div class="container">
+    <%= form_with(model: client, local: true, class: "mt-4") do |form| %>
+      <% if client.errors.any? %>
+        <div class="alert alert-danger" role="alert">
+          <h4 class="alert-heading"><%= pluralize(client.errors.count, "error") %> prohibited this client from being saved:</h4>
+          <ul>
+            <% client.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
 
-      <ul>
-        <% client.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
-    </div>
-  <% end %>
+      <div class="form-group">
+        <%= form.label :name , "Nome"%>
+        <%= form.text_field :name, class: "form-control" %>
+      </div>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
+      <div class="form-group">
+        <%= form.label :email, "Email" %>
+        <%= form.text_field :email, class: "form-control" %>
+      </div>
+
+      <div class="form-group">
+        <%= form.label :phone, "Telefone" %>
+        <%= form.text_field :phone, class: "form-control" %>
+      </div>
+
+      <h3 class="mt-3 text-center">Endereço</h3>
+      <%= form.fields_for :address do |address_form| %>
+        <div class="form-group">
+          <%= address_form.label :street, "Rua" %>
+          <%= address_form.text_field :street, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= address_form.label :city, "Cidade" %>
+          <%= address_form.text_field :city, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= address_form.label :state, "Estado" %>
+          <%= address_form.text_field :state, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
+          <%= address_form.label :postal_code, "CEP" %>
+          <%= address_form.text_field :postal_code, class: "form-control" %>
+        </div>
+      <% end %>
+
+      <div class="d-flex gap-3 mt-3">
+        <%= form.submit "Salvar", class: "btn btn-primary" %>
+        <%= link_to "Cancelar", clients_path, class: "btn btn-secondary" %>
+      </div>
+    <% end %>
   </div>
-
-  <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="field">
-    <%= form.label :phone %>
-    <%= form.text_field :phone %>
-  </div>
-
-  <h3>Endereço</h3>
-  <%= form.fields_for :address do |address_form| %>
-    <div class="field">
-      <%= address_form.label :street %>
-      <%= address_form.text_field :street %>
-    </div>
-
-    <div class="field">
-      <%= address_form.label :city %>
-      <%= address_form.text_field :city %>
-    </div>
-
-    <div class="field">
-      <%= address_form.label :state %>
-      <%= address_form.text_field :state %>
-    </div>
-
-    <div class="field">
-      <%= address_form.label :postal_code %>
-      <%= address_form.text_field :postal_code %>
-    </div>
-  <% end %>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
