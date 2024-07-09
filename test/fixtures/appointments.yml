@@ -1,0 +1,11 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  client: one
+  service: one
+  date: 2024-07-08 22:13:22
+
+two:
+  client: two
+  service: two
+  date: 2024-07-08 22:13:22
