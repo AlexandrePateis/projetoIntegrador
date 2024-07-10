@@ -4,6 +4,15 @@ class AppointmentsController < ApplicationController
   # GET /appointments or /appointments.json
   def index
     @appointments = Appointment.all
+    @upcoming_appointments = Appointment.where('datetime >= ? AND datetime <= ?', DateTime.current, 2.minutes.from_now)
+  end
+
+  def upcoming
+    binding.pry
+    @upcoming_appointments = Appointment.where('datetime >= ? AND datetime <= ?', DateTime.current, 2.minutes.from_now)
+    respond_to do |format|
+      format.js
+    end
   end
 
   # GET /appointments/1 or /appointments/1.json
@@ -65,6 +74,6 @@ class AppointmentsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def appointment_params
-      params.require(:appointment).permit(:client_id, :service_id, :date, :time)
+      params.require(:appointment).permit(:client_id, :service_id, :datetime)
     end
 end

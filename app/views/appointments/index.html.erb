@@ -16,7 +16,7 @@
         <% @appointments.each do |appointment| %>
           <tr id="<%= dom_id(appointment) %>">
             <td><%= appointment.id %></td>
-            <td><%= appointment.date %></td>
+            <td><%= appointment.datetime %></td>
             <td><%= appointment.client.name %></td>
             <td>
               <%= link_to "Mostrar", appointment, class: "btn btn-secondary btn-sm" %>

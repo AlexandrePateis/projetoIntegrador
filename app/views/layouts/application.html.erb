@@ -31,39 +31,31 @@
             <li class="nav-item">
                 <%= link_to 'Agendamentos', appointments_path, class: "nav-link text-white" %>
             </li>
-        <li class="nav-item">
-      <%= link_to appointments_path, class: "nav-link text-white" do %>
-        <i class="bi bi-bell"></i>
-        <% if Appointment.any? { |appointment| appointment.near_schedule? } %>
-          <span class="badge bg-danger">!</span>
-        <% end %>
-      <% end %>
-    </li>
+            <li class="nav-item">
+              <button id="notification-bell" class="btn btn-link nav-link text-white" data-bs-toggle="modal" data-bs-target="#upcomingAppointmentsModal">
+                <i class="bi bi-bell"></i>
+                <% if @upcoming_appointments.any? %>
+                  <span class="badge bg-danger rounded-circle"><%= @upcoming_appointments.count %></span>
+                <% end %>
+              </button>
+            </li>
           </ul>
-          <!-- Ícone de notificação -->
         </div>
       </div>
     </nav>
 
     <%= yield %>
-
-    <!-- Modal de notificação de agendamentos -->
-    <div class="modal fade" id="appointmentNotificationModal" tabindex="-1" aria-labelledby="appointmentNotificationModalLabel" aria-hidden="true">
+    <div class="modal fade" id="upcomingAppointmentsModal" tabindex="-1" aria-labelledby="upcomingAppointmentsModalLabel" aria-hidden="true">
       <div class="modal-dialog">
         <div class="modal-content">
           <div class="modal-header">
-            <h5 class="modal-title" id="appointmentNotificationModalLabel">Upcoming Appointments</h5>
-            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-              <span aria-hidden="true">&times;</span>
-            </button>
+            <h5 class="modal-title" id="upcomingAppointmentsModalLabel">Próximos agendamentos</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
           </div>
-          <div class="modal-body">
+          <div class="modal-body" id="upcomingAppointmentsModalContent">
             <% @upcoming_appointments.each do |appointment| %>
-              <p><strong><%= appointment.date.strftime("%Y-%m-%d %H:%M") %></strong>: <%= appointment.description %></p>
+              <p><%= appointment.client.name %> - <%= appointment.service.name %> às <%= appointment.datetime.strftime("%d/%m/%Y %H:%M") %></p>
             <% end %>
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
           </div>
         </div>
       </div>
