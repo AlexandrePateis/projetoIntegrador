@@ -26,6 +26,11 @@
         <%= form.date_field :date, class: "form-control" %>
       </div>
 
+        <div class="form-group mt-2">
+      <%= form.label :time, "Horário", class:"fw-bold"  %>
+      <%= form.time_field :time, class: "form-control" %>
+    </div>
+
       <div class="form-group mt-2">
         <%= form.submit "Salvar", class: "btn btn-secondary btn-sm" %>
         <%= link_to "Cancelar", appointments_path, class: "btn btn-secondary btn-sm" %>

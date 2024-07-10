@@ -3,7 +3,7 @@
 
     <div class="card">
       <div class="card-header bg-secondary text-white">
-        Client Details
+        Cliente Detalhes
       </div>
       <div class="card-body">
         <%= render @client %>
@@ -12,9 +12,40 @@
         <div class="d-flex gap-2" role="group">
           <%= link_to "Voltar", clients_path, class: 'btn btn-secondary btn-sm' %>
           <%= link_to "Editar cliente", edit_client_path(@client), class: 'btn btn-secondary btn-sm' %>
-        <%= button_to "Apagar", @client, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-secondary btn-sm'%>
+          <%= button_to "Apagar", @client, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-secondary btn-sm'%>
+          <button type="button" class="btn btn-secondary btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">Ver histórico</button>
         </div>
       </div>
     </div>
+  </div>
 
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header border-0">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">Histórico do cliente</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <!-- Loop para exibir os serviços do cliente -->
+            <% @client.appointments.each do |ap| %>
+              <div class="card mb-3">
+                <div class="card-body">
+                  <h5 class="card-title"><%= @client.name %></h5>
+                  <p class="card-text"><strong>Descrição:</strong> <%= ap.service.description  %></p>
+                  <p class="card-text"><strong>Data:</strong> <%= ap.date %></p>
+                  <p class="card-text"><strong>Preço:</strong> <%= ap.service.price %></p>
+                </div>
+              </div>
+            <% end %>
+            <!-- Se não houver serviços -->
+            <% if @client.appointments.empty? %>
+              <p>Não há registro no histórico.</p>
+            <% end %>
+          </div>
+        <div class="modal-footer  border-0">
+        </div>
+      </div>
+    </div>
   </div>
