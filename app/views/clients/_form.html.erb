@@ -34,6 +34,11 @@
         </div>
 
         <div class="form-group">
+          <%= address_form.label :neighborhood, "Bairro", class:"fw-bold" %>
+          <%= address_form.text_field :neighborhood, class: "form-control" %>
+        </div>
+
+        <div class="form-group">
           <%= address_form.label :city, "Cidade", class:"fw-bold"  %>
           <%= address_form.text_field :city, class: "form-control" %>
         </div>

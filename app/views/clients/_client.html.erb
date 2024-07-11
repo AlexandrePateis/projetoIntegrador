@@ -5,7 +5,7 @@
           <p class="card-text"><strong>Nome:</strong> <%= client.name %></p>
           <p class="card-text"><strong>Email:</strong> <%= client.email %></p>
           <p class="card-text"><strong>Telefone:</strong> <%= client.phone %></p>
-          <p class="card-text"><strong>Endereço:</strong> <%= client.address_id %></p>
+          <p class="card-text"><strong>Endereço:</strong> <%= client.address.street %>, <%= client.address.neighborhood %>, <%= client.address.city %></p>
         </div>
       </div>
     </div>
