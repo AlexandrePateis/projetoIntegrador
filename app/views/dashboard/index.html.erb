@@ -23,7 +23,11 @@
     <main class="container mt-4">
       <!-- Banner Principal -->
       <div class="jumbotron text-center bg-secondary bg-gradient p-5 rounded-5 rounded-top-0">
-        <h2 class="text-white">Bem-vindo ao TimeManagerPro</h2>
+        <% if user_signed_in? %>
+          <h2 class="text-white">Bem-vindo <%= current_user.name %> !!</h2>
+        <% else %>
+          <h2 class="text-white">Bem-vindo ao TimeManagerPro</h2>
+        <% end %>
         <p class="text-white" >O melhor sistema para gerenciar seu tempo e seus agendamentos.</p>
       </div>
 
