@@ -37,7 +37,7 @@
         <tr>
           <td><%= appointment.client.name %></td>
           <td><%= appointment.service.name %></td>
-          <td><%= appointment.datetime %></td>
+          <td><%= appointment.datetime.strftime('%d/%m/%Y - %H:%M') %></td>
           <td><%= number_to_currency(appointment.service.price) %></td>
         </tr>
       <% end %>
