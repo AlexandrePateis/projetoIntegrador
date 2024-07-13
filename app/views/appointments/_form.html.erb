@@ -13,25 +13,25 @@
 
       <div class="form-group">
         <%= form.label :client_id, "Cliente", class:"fw-bold" %>
-        <%= form.collection_select :client_id, Client.all, :id, :name, { prompt: "Selecione um Cliente" }, { class: "form-control" } %>
+        <%= form.collection_select :client_id, current_user.clients, :id, :name, { prompt: "Selecione um Cliente" }, { class: "form-control" } %>
       </div>
 
-      <div class="form-group mt-2">
+      <div class="form-group mt-4">
         <%= form.label :service_id, "Serviço", class:"fw-bold"  %>
-        <%= form.collection_select :service_id, Service.all, :id, :name, { prompt: "Selecione um Serviço" }, { class: "form-control" } %>
+        <%= form.collection_select :service_id, current_user.services, :id, :name, { prompt: "Selecione um Serviço" }, { class: "form-control" } %>
       </div>
 
-      <div class="form-group mt-2">
+      <div class="form-group mt-4">
         <%= form.label :description, "Descrição", class:"fw-bold"  %>
         <%= form.text_field :description, class: "form-control"  %>
       </div>
 
-      <div class="form-group mt-2">
+      <div class="form-group mt-4">
         <%= form.label :datetime, "Data e Hora", class:"fw-bold" %>
         <%= form.datetime_field :datetime, class: "form-control" %>
       </div>
 
-      <div class="form-group mt-2">
+      <div class="form-group mt-4">
         <%= form.submit "Salvar", class: "btn btn-secondary btn-sm" %>
         <%= link_to "Cancelar", appointments_path, class: "btn btn-secondary btn-sm" %>
       </div>

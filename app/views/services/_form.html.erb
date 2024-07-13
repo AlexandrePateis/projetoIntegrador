@@ -16,17 +16,17 @@
         <%= form.text_field :name, class: 'form-control' %>
       </div>
 
-      <div class="form-group">
+      <div class="form-group mt-4">
         <%= form.label :description, "Descrição", class:"fw-bold" %>
         <%= form.text_area :description, class: 'form-control' %>
       </div>
 
-      <div class="form-group">
+      <div class="form-group mt-4">
         <%= form.label :price, "Preço", class:"fw-bold" %>
         <%= form.text_field :price, class: 'form-control' %>
       </div>
 
-      <div class="d-flex gap-2 mt-3">
+      <div class="d-flex gap-2 mt-4">
         <%= link_to "Voltar", services_path, class: 'btn btn-secondary btn-sm' %>
         <%= form.submit "Salvar", class: 'btn btn-secondary btn-sm' %>
       </div>

@@ -1,6 +1,6 @@
 <nav class="navbar navbar-expand-lg bg-secondary">
   <div class="container-fluid">
-    <a class="navbar-brand text-white" href="#"><i class="bi bi-stopwatch-fill"></i> TimeManagerPro</a>
+    <a class="navbar-brand text-white bebas-neue-regular" href="#"><i class="bi bi-stopwatch-fill"></i> TimeManagerPro</a>
       <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
@@ -21,6 +21,7 @@
           <li class="nav-item">
             <%= link_to 'Relatório', reports_path, class: "nav-link text-white" %>
           </li>
+          <% if user_signed_in? %>
           <li class="nav-item">
             <button id="notification-bell" class="btn btn-link nav-link text-white" data-bs-toggle="modal" data-bs-target="#upcomingAppointmentsModal">
               <i class="bi bi-bell"></i>
@@ -29,6 +30,7 @@
                 <% end %>
             </button>
           </li>
+          <%end%>
           <% if user_signed_in? %>
           <div class="dropdown float-end">
             <button class="btn btn-secondary dropdown-toggle me-5" type="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -52,3 +54,11 @@
       </div>
   </div>
 </nav>
+<style>
+* {
+  font-family: "Jura", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+</style>

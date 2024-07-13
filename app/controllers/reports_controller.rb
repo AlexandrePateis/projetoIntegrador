@@ -1,9 +1,11 @@
 # app/controllers/reports_controller.rb
 class ReportsController < ApplicationController
+  before_action :authenticate_user!
+
   def index
-    @clients = Client.all
-    @services = Service.all
-    @appointments = Appointment.all
+    @clients = current_user.clients
+    @services = current_user.services
+    @appointments = current_user.appointments
 
     if params[:client_id].present?
       @appointments = @appointments.where(client_id: params[:client_id])

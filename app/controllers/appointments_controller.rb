@@ -4,8 +4,8 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments or /appointments.json
   def index
-    @appointments = Appointment.all
-    @upcoming_appointments = Appointment.where('datetime >= ? AND datetime <= ?', DateTime.current, 2.minutes.from_now)
+    @appointments = current_user.appointments
+    @upcoming_appointments = current_user.appointments.where('datetime >= ? AND datetime <= ?', DateTime.current, 2.minutes.from_now)
   end
 
   def upcoming
@@ -18,6 +18,7 @@ class AppointmentsController < ApplicationController
 
   # GET /appointments/1 or /appointments/1.json
   def show
+    @appointment = current_user.appointments.find(params[:id])
   end
 
   # GET /appointments/new
@@ -31,11 +32,11 @@ class AppointmentsController < ApplicationController
 
   # POST /appointments or /appointments.json
   def create
-    @appointment = Appointment.new(appointment_params)
+    @appointment = current_user.appointments.new(appointment_params)
 
     respond_to do |format|
       if @appointment.save
-        format.html { redirect_to appointment_url(@appointment), notice: "Appointment was successfully created." }
+        format.html { redirect_to appointment_url(@appointment), notice: "Criado com sucesso!" }
         format.json { render :show, status: :created, location: @appointment }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -48,7 +49,7 @@ class AppointmentsController < ApplicationController
   def update
     respond_to do |format|
       if @appointment.update(appointment_params)
-        format.html { redirect_to appointment_url(@appointment), notice: "Appointment was successfully updated." }
+        format.html { redirect_to appointment_url(@appointment), notice: "Atualizado com sucesso!" }
         format.json { render :show, status: :ok, location: @appointment }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -62,7 +63,7 @@ class AppointmentsController < ApplicationController
     @appointment.destroy!
 
     respond_to do |format|
-      format.html { redirect_to appointments_url, notice: "Appointment was successfully destroyed." }
+      format.html { redirect_to appointments_url, notice: "Deletado com sucesso!" }
       format.json { head :no_content }
     end
   end

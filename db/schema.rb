@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.1].define(version: 2024_07_13_144244) do
+ActiveRecord::Schema[7.1].define(version: 2024_07_13_151016) do
   create_table "addresses", force: :cascade do |t|
     t.string "street"
     t.string "city"
@@ -28,8 +28,10 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_13_144244) do
     t.datetime "updated_at", null: false
     t.datetime "datetime"
     t.string "description"
+    t.integer "user_id"
     t.index ["client_id"], name: "index_appointments_on_client_id"
     t.index ["service_id"], name: "index_appointments_on_service_id"
+    t.index ["user_id"], name: "index_appointments_on_user_id"
   end
 
   create_table "clients", force: :cascade do |t|
@@ -39,7 +41,9 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_13_144244) do
     t.integer "address_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["address_id"], name: "index_clients_on_address_id"
+    t.index ["user_id"], name: "index_clients_on_user_id"
   end
 
   create_table "services", force: :cascade do |t|
@@ -48,6 +52,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_13_144244) do
     t.decimal "price"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
+    t.index ["user_id"], name: "index_services_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -65,5 +71,8 @@ ActiveRecord::Schema[7.1].define(version: 2024_07_13_144244) do
 
   add_foreign_key "appointments", "clients"
   add_foreign_key "appointments", "services"
+  add_foreign_key "appointments", "users"
   add_foreign_key "clients", "addresses"
+  add_foreign_key "clients", "users"
+  add_foreign_key "services", "users"
 end
