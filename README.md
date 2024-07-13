@@ -1,24 +1,22 @@
-# README
+# Projeto Integrador - Sistema de Agendamento
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Este projeto é uma aplicação desenvolvida como parte da disciplina "Projeto Integrador" do professor Daniel Maia. A aplicação tem como objetivo facilitar o gerenciamento de serviços, clientes, agendamentos e relatórios.
 
-Things you may want to cover:
+## Funcionalidades
 
-* Ruby version
+- **Cadastro de Serviços**: Permite o registro de diferentes serviços oferecidos.
+- **Cadastro de Clientes**: Permite o registro de informações dos clientes.
+- **Agendamento**: Possibilita o agendamento de serviços para os clientes.
+- **Relatórios**: Geração de relatórios relacionados aos serviços prestados e agendamentos.
+- **Notificações**: Geração de notificações dos agendamentos próximos.
+  
 
-* System dependencies
+## Como Rodar a Aplicação
 
-* Configuration
+### Pré-requisitos
 
-* Database creation
+- Ruby (versão 3.1.2)
+- Rails (versão 7)
+- Node.js (para gerenciamento de pacotes JavaScript)
+- Yarn (para gerenciar dependências do front-end)
 
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
